@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[])
 {
-    int i;
+    int i, timestep;
     printf("The following arguments were passed to main(): ");
     for(i=1; i<argc; i++) printf("%s ", argv[i]);
     
@@ -23,12 +23,13 @@ int main(int argc, char *argv[])
         read_init_cond();
         
     // Time marching section 
+    for (i=1; i<timestep; i++) {
         // CFD Solver subroutine
-        
+        SPHsolver();
         // Results writing subroutine 
-        
             // the hydrodynamic field is written to vtk ".files"
-            
+            writeVTK();
+    }
     // End of Time marching section 
     
     return 0;
